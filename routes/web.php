@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Apps\Models\KlinikModel;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,14 +16,17 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('about', function () {
-    return view('about');
+Route::get('home_member', function () {
+   	return view('/home_member');
 });
 
-Route::get('super_index', function () {
-   	return view('super_admin/super_index');
-});
+//====================Admin klinik ========================
 
-Route::get('admin_klinik', function () {
-   return view('admin_klinik/index');
-});
+Route::get('index', function () {
+   	return view('admin_klinik/index');
+}); 
+
+Route::get('klinik','KlinikController@klinik');
+Route::post('addKlinik','KlinikController@create');
+Route::put('editKlinik/{id}','KlinikController@update');
+Route::delete('deleteKlinik/{id}','KlinikController@delete');
